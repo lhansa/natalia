@@ -54,7 +54,12 @@ app_ui <- function(request) {
           ),
           bs4Dash::tabItem(
             tabName = "treatments",
-            shiny::HTML("Holi")
+            box(
+              mod_select_symptom_ui("select_illness_1"),
+              collapsible = TRUE
+            ),
+
+            mod_show_treat_ui("select_illness_1")
           )
         )
 
