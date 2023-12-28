@@ -21,22 +21,26 @@ app_ui <- function(request) {
     #   h1("natalia")
     # )
     dashboardPage(
+      freshTheme = create_fresh_theme() ,
       header = bs4Dash::dashboardHeader(
         title = bs4Dash::dashboardBrand(
-          title = "My dashboard",
+          title = "CoDiVet",
           color = "primary",
           href = "https://adminlte.io/themes/v3",
           image = "https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png"
         )
       ),
       sidebar = bs4Dash::dashboardSidebar(
-        bs4Dash::menuItem(
-          text = "Síntomas",
-          tabName = "symptoms"
-        ),
-        bs4Dash::menuItem(
-          text = "Tratamientos",
-          tabName = "treatments"
+        bs4Dash::sidebarMenu(
+          id = "sidebarMenu",
+          bs4Dash::menuItem(
+            text = "Síntomas",
+            tabName = "symptoms"
+          ),
+          bs4Dash::menuItem(
+            text = "Tratamientos",
+            tabName = "treatments"
+          )
         )
 
       ),

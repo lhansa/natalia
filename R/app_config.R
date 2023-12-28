@@ -42,3 +42,19 @@ get_golem_config <- function(
     use_parent = use_parent
   )
 }
+
+
+#' Create Fresh Theme
+#' @noRd
+#' @importFrom fresh create_theme
+#' @importFrom fresh bs4dash_status
+#'
+create_fresh_theme <- function() {
+
+  create_theme(
+    bs4dash_status(
+      primary = "#00cc00", danger = "#BF616A"
+    )
+  )
+
+}
