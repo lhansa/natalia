@@ -55,11 +55,11 @@ app_ui <- function(request) {
           bs4Dash::tabItem(
             tabName = "treatments",
             box(
-              mod_select_symptom_ui("select_illness_1"),
+              mod_select_illness_ui("show_treat_1"),
               collapsible = TRUE
             ),
 
-            mod_show_treat_ui("select_illness_1")
+            mod_show_treat_ui("show_treat_1")
           )
         )
 
