@@ -34,6 +34,10 @@ app_ui <- function(request) {
         bs4Dash::sidebarMenu(
           id = "sidebarMenu",
           bs4Dash::menuItem(
+            text = "Ficha",
+            tabName = "ficha"
+          ),
+          bs4Dash::menuItem(
             text = "Síntomas",
             tabName = "symptoms"
           ),
@@ -47,34 +51,48 @@ app_ui <- function(request) {
       body = bs4Dash::dashboardBody(
         bs4Dash::tabItems(
           bs4Dash::tabItem(
-            tabName = "symptoms",
-            box(
-              mod_select_symptom_ui("select_symptom_1"),
-              collapsible = TRUE
+            tabName = "ficha",
+            fluidRow(
+              box(
+                mod_entrada_paciente_ui("entrada_paciente_1"),
+                collapsible = TRUE
+              ),
+              box(
+                mod_select_symptom_ui("entrada_paciente_1"),
+                collapsible = TRUE
+              )
             ),
-
-            mod_show_illnesses_ui("select_symptom_1")
-
+            mod_suggest_illness_ui("entrada_paciente_1")
+        ),
+        bs4Dash::tabItem(
+          tabName = "symptoms",
+          box(
+            mod_select_symptom_ui("select_symptom_1"),
+            collapsible = TRUE
           ),
-          bs4Dash::tabItem(
-            tabName = "treatments",
-            box(
-              mod_select_illness_ui("show_treat_1"),
-              collapsible = TRUE
-            ),
 
-            mod_show_treat_ui("show_treat_1")
-          )
+          mod_show_illnesses_ui("select_symptom_1")
+
+        ),
+        bs4Dash::tabItem(
+          tabName = "treatments",
+          box(
+            mod_select_illness_ui("show_treat_1"),
+            collapsible = TRUE
+          ),
+
+          mod_show_treat_ui("show_treat_1")
         )
+      )
 
 
-        # lapply(bs4Dash::getAdminLTEColors(), function(color) {
-        #   bs4Dash::box(status = color)
-        # })
-      ),
-      controlbar = bs4Dash::dashboardControlbar(),
-      title = "Natalia"
-    )
+      # lapply(bs4Dash::getAdminLTEColors(), function(color) {
+      #   bs4Dash::box(status = color)
+      # })
+    ),
+    controlbar = bs4Dash::dashboardControlbar(),
+    title = "Natalia"
+  )
   )
 }
 
